@@ -1,0 +1,41 @@
+<nz-table
+  #nzTable
+  [nzData]="customers"
+  nzTableLayout="fixed"
+  (nzQueryParams)="onQueryParamsChange($event)"
+>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th
+        nzColumnKey="country_name"
+        [nzFilters]="filterCountryName"
+        [nzFilterFn]="true"
+        [nzFilterMultiple]="false"
+      >
+        Country Name
+      </th>
+      <th>Country Code</th>
+      <th
+        nzColumnKey="is_valid"
+        [nzFilters]="filterValid"
+        [nzFilterFn]="true"
+        [nzFilterMultiple]="false"
+      >
+        Valid
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of nzTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data.country_name }}</td>
+      <td>{{ data.country_code }}</td>
+      <td>{{ data.is_valid }}</td>
+    </tr>
+  </tbody>
+</nz-table>
